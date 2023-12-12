@@ -1,0 +1,1 @@
+echo "# multibranch-sample-app"
