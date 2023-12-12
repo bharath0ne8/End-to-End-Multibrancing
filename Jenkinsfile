@@ -24,6 +24,26 @@ pipeline {
 
     }
 
+    stage('cat README') {
+
+      when {
+
+        branch "test"
+
+      }
+
+      steps {
+
+        sh '''
+
+          cat README.md
+
+        '''
+
+      }
+
+    }
+
   }
 
 }
