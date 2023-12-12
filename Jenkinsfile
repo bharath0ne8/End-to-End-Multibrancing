@@ -15,7 +15,7 @@ pipeline {
       steps {
 
         sh '''
-
+ 
           java -version
 
         '''
@@ -24,7 +24,7 @@ pipeline {
 
     }
 
-    stage('cat README') {
+    stage('check branch') {
 
       when {
 
