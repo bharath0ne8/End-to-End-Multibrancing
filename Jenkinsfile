@@ -32,16 +32,6 @@ pipeline {
 
       }
 
-      steps {
-
-        sh '''
-
-          cat README.md
-
-        '''
-
-      }
-
     }
 
   }
