@@ -1,1 +1,1 @@
-echo "# multibranch-sample-app" for auto trigger
+echo "# multibranch-sample-app" for auto triggers
