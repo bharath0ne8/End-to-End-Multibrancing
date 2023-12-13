@@ -1,49 +1,31 @@
 pipeline {
+    agent any
 
-  agent any
-
-  options {
-
-    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')
-
-  }
-
-  stages {
-
-    stage('Hello') {
-
-      steps {
-
-        sh '''
-
-          java -version
-
-        '''
-
-      }
-
+    options {
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')
     }
 
-    stage('cat README') {
-
-      when {
-
-        branch "dev"
-
-      }
-
-      steps {
-
-        sh '''
-
-          cat README.md
-
-        '''
-
-      }
-
+    triggers {
+        // Trigger the pipeline only for the "dev" branch
+        branch('dev')
     }
 
-  }
+    stages {
+        stage('Hello') {
+            steps {
+                sh '''
+                    java -version
+                '''
+            }
+        }
 
+        stage('cat README') {
+            steps {
+                sh '''
+                    cat README.md
+                '''
+            }
+        }
+    }
 }
+
