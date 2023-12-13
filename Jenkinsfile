@@ -2,28 +2,23 @@ pipeline {
     agent any
 
     options {
-        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')
+        buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5'))
     }
 
     triggers {
-        // Trigger the pipeline only for the "dev" branch
-        branch('dev')
+        pollSCM('*/5 * * * *')  // Poll SCM every 5 minutes
     }
 
     stages {
         stage('Hello') {
             steps {
-                sh '''
-                    java -version
-                '''
+                sh 'java -version'
             }
         }
 
         stage('cat README') {
             steps {
-                sh '''
-                    cat README.md
-                '''
+                sh 'cat README.md'
             }
         }
     }
